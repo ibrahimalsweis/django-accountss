@@ -1,0 +1,10 @@
+
+<h3>profile_edit</h3>
+
+<form  method="POST">
+    {% csrf_token %}
+    {{profile_form}}
+    {{user_form}}
+
+    <input type="submit" value="Save">
+</form>
