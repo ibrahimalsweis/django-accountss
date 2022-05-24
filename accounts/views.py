@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import SignupForm, ProfileForm , UserForm
 from django.contrib.auth import authenticate , login
+from django.contrib.auth.views import PasswordChangeView , PasswordChangeDoneView
+
+
+
 def signup(request):
 
     if request.method == 'POST':
@@ -35,7 +39,7 @@ def profile_edit(request):
     profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
         user_form = UserForm(request.POST,instance=request.user)
-        profile_form = ProfileForm(request.POST ,instance=profile)
+        profile_form = ProfileForm(request.POST,request.FILES,instance=request.user.profile)
 
         if profile_form.is_valid() and user_form.is_valid():
             user_form.save()
@@ -43,9 +47,15 @@ def profile_edit(request):
             # myform.user = request.user
             profile_form.save()
             return redirect('/accounts/profile')
-
     else:
         profile_form = ProfileForm(instance=request.user)
         user_form = UserForm(instance=request.user)
     return render(request, 'registration\profile_edit.html',{'profile_form':profile_form,'user_form':user_form})
 
+
+
+class MyPasswordChangeView(PasswordChangeView):
+    template_name = 'password_change_form.html'
+
+class MyPasswordChangeDoneView(PasswordChangeDoneView):
+    template_name ='password_reset_done.html'

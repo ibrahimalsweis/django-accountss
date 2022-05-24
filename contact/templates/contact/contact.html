@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact</title>
+</head>
+<body>
+    
+    {% for i in info_date  %}
+        <h3>location : {{ i.location }}</h3>
+        <h3>phone : {{ i.phone_number }}</h3>
+        <h3>email : {{ i.email }}</h3>
+    {% endfor %}
+        
+    <h4>contact</h4>
+    <form  method="POST">
+        {% csrf_token %}
+        <p><input type="text" name="subject" id="subject" placeholder="Name"></p>
+        <p><input type="email" name="email" id="email" placeholder="Email"></p>
+        <p><textarea name="message" id="message" cols="30" rows="10" placeholder="Messages"></textarea></p>
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery images</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- {{ form_upload_image }} -->
+        <input type="txet" name='category' value="">
+        <input type="file"  name="images" multiple >
+        <input type="submit" value="submit">
+    </form>
+    <img src="" alt="" width="200px" style="margin:30px;">
+</body>
+</html>

@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'gallery.apps.GalleryConfig',
+    'social.apps.SocialConfig',
+    'contact.apps.ContactConfig',
     'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +76,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+
+
+
+
+
+
+
+
 
 
 # Database
@@ -122,11 +136,26 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-MEDIA_URL = os.path.join(BASE_DIR,'media/')
-MEDIA_ROOT = '/media/'
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = '/accounts/profile'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST  = 'smtp.gmail.com'
+# EMAIL_HOST_USER ='matrexnat9911@gmail.com'
+# EMAIL_HOST_PASSWORD ='pgejegthqkrlrkps'
+# EMAIL_US_TLS = False
+# EMAIL_PORT = 1025
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'matrexnat9911@gmail.com'
+EMAIL_HOST_PASSWORD = 'kmofllaxqlpsadrs'

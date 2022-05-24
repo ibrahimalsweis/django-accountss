@@ -1,10 +1,10 @@
 
 <h3>profile_edit</h3>
 
-<form  method="POST">
+<form  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{profile_form}}
-    {{user_form}}
+    {{user_form.as_p}}
+    {{profile_form.as_p}}
 
     <input type="submit" value="Save">
 </form>
